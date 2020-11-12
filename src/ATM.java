@@ -50,7 +50,7 @@ public class ATM {
     private void simulateShowDetails(BankAccount account) {
         System.out.println("Owner: " + account.getAccountOwner().getName(ATM.SORTABLE));
         System.out.println("Account No.: " + account.getMaskedAccountNumber());
-        System.out.println("Email: " + account.getAccountOwner().getEmailAddress());
+        System.out.println("Email: " + account.getAccountOwner().getEmail());
         System.out.println("Phone: " + account.getAccountOwner().getFormattedPhoneNumber());
         System.out.println("Mailing Address : " + pad(18, account.getAccountOwner().getMailingAddress().getFormattedAddress()));
         System.out.println();
@@ -132,7 +132,7 @@ public class ATM {
         System.out.println("Balance (before): " + origin.getFormattedBalance());
         System.out.println("Destination: " + destination.getMaskedAccountNumber());
         System.out.println("Balance (before): " + destination.getFormattedBalance());
-        System.out.println("Status: " + getStatus(origin.transfer(destination.getAccountNumber(), 500)));
+        System.out.println("Status: " + getStatus(origin.transfer(destination.getAccountNum(), 500)));
         System.out.println("Balance (after, origin): " + origin.getFormattedBalance());
         System.out.println("Balance (after, destination): " + destination.getFormattedBalance());
         System.out.println();
@@ -149,7 +149,7 @@ public class ATM {
         System.out.println("Balance (before): " + origin.getFormattedBalance());
         System.out.println("Destination: " + destination.getMaskedAccountNumber());
         System.out.println("Balance (before): " + destination.getFormattedBalance());
-        System.out.println("Status: " + getStatus(origin.transfer(destination.getAccountNumber(), -1)));
+        System.out.println("Status: " + getStatus(origin.transfer(destination.getAccountNum(), -1)));
         System.out.println("Balance (after, origin): " + origin.getFormattedBalance());
         System.out.println("Balance (after, destination): " + destination.getFormattedBalance());
         System.out.println();
@@ -166,7 +166,7 @@ public class ATM {
         System.out.println("Balance (before): " + origin.getFormattedBalance());
         System.out.println("Destination: " + destination.getMaskedAccountNumber());
         System.out.println("Balance (before): " + destination.getFormattedBalance());
-        System.out.println("Status: " + getStatus(origin.transfer(destination.getAccountNumber(), 5000)));
+        System.out.println("Status: " + getStatus(origin.transfer(destination.getAccountNum(), 5000)));
         System.out.println("Balance (after, origin): " + origin.getFormattedBalance());
         System.out.println("Balance (after, destination): " + destination.getFormattedBalance());
         System.out.println();
@@ -197,8 +197,8 @@ public class ATM {
         account.getAccountOwner().setSalutation("Ms");
         account.getAccountOwner().setFirstName("Paulina");
         account.getAccountOwner().setLastName("Bridges");
-        account.getAccountOwner().setEmailAddress("pbridges@example.com");
-        account.getAccountOwner().setPhoneNumber(5557773333L);
+        account.getAccountOwner().setEmail("pbridges@example.com");
+        account.getAccountOwner().setPhoneNum(5557773333L);
         account.getAccountOwner().getMailingAddress().setPrimaryStreet("456 Center Street");
         account.getAccountOwner().getMailingAddress().setSecondaryStreet("Building 7, Apartment G");
         account.getAccountOwner().getMailingAddress().setCity("New York");
@@ -207,7 +207,7 @@ public class ATM {
 
         System.out.println("Owner: " + account.getAccountOwner().getName(ATM.FORMAL));
         System.out.println("Account No.: " + account.getMaskedAccountNumber());
-        System.out.println("Email: " + account.getAccountOwner().getEmailAddress());
+        System.out.println("Email: " + account.getAccountOwner().getEmail());
         System.out.println("Phone: " + account.getAccountOwner().getFormattedPhoneNumber());
         System.out.println("Mailing Address : " + pad(18, account.getAccountOwner().getMailingAddress().getFormattedAddress()));
     }
@@ -220,7 +220,7 @@ public class ATM {
      */
     public static BankAccount lookup(long accountNumber) {
         for (BankAccount account : database) {
-            if (account != null && account.getAccountNumber() == accountNumber) {
+            if (account != null && account.getAccountNum() == accountNumber) {
                 return account;
             }
         }
